@@ -11,6 +11,11 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import SearchIcon from "/assets/search-icon.png";
+import CustomerAvatar from "/assets/customer-avater.png";
+import LikeLogo from "/assets/like-logo.png";
+import NaturalLogo from "/assets/natural-logo.png";
+import DislikeLogo from "/assets/dislike-logo.png";
 
 import { Bar, Pie, Line } from "react-chartjs-2";
 
@@ -88,7 +93,7 @@ const AnalyticsSection: React.FC = () => {
     labels: ["0-1 secs", "1-8 secs", "8-24 secs", "+24 secs", "No replies",],
     datasets: [
       {
-        data: [30, 45, 18, 5, 3],
+        data: [26, 45, 12, 4, 2],
         backgroundColor: [
           "#3AC828", // green
           "#FDB02B", // orange
@@ -178,21 +183,22 @@ const AnalyticsSection: React.FC = () => {
   return (
     <div className="mt-8">
       {/* Page header: "Analytics" on the left, search on the right */}
-      <div className="flex items-center justify-between">
-        <h2 className="font-semibold text-xl text-gray-800">Analytics</h2>
-        <div className="relative w-48 md:w-64">
-          <input
-            type="text"
-            placeholder="Search widget"
-            className="bg-white w-full px-4 py-2 pl-10 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <img
-            src="/src/assets/search-icon.png"
-            alt="search icon"
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
-          />
-        </div>
-      </div>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+  <h2 className="font-semibold text-xl text-gray-800">Analytics</h2>
+  <div className="relative w-full sm:w-48 md:w-64">
+    <input
+      type="text"
+      placeholder="Search widget"
+      className="bg-white w-full px-4 py-2 pl-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <img
+      src={SearchIcon}
+      alt="search icon"
+      className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 opacity-50 text-left"
+    />
+  </div>
+</div>
+
 
       {/* Main grid layout */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6 lg:max-h-90">
@@ -207,7 +213,7 @@ const AnalyticsSection: React.FC = () => {
             <div className="flex flex-col items-start space-x-2 space-y-2">
               {/* Replace with your own icon path or SVG */}
               <img
-                src="/src/assets/customer-avater.png"
+                src={CustomerAvatar}
                 alt="User icon"
                 className="w-5 h-5 mt-1"
               />
@@ -222,7 +228,7 @@ const AnalyticsSection: React.FC = () => {
             {/* Positive */}
             <div className="flex flex-col items-start space-x-2 space-y-2">
               <img
-                src="/src/assets/like-logo.png"
+                src={LikeLogo}
                 alt="Thumbs up icon"
                 className="w-5 h-5 mt-1"
               />
@@ -235,7 +241,7 @@ const AnalyticsSection: React.FC = () => {
             {/* Neutral */}
             <div className="flex flex-col items-start space-x-2 space-y-2">
               <img
-                src="/src/assets/natural-logo.png"
+                src={NaturalLogo}
                 alt="Neutral icon"
                 className="w-5 h-5 mt-1"
               />
@@ -248,7 +254,7 @@ const AnalyticsSection: React.FC = () => {
             {/* Negative */}
             <div className="flex flex-col items-start space-x-2 space-y-2">
               <img
-                src="/src/assets/dislike-logo.png"
+                src={DislikeLogo}
                 alt="Thumbs down icon"
                 className="w-5 h-5 mt-1"
               />
@@ -261,10 +267,14 @@ const AnalyticsSection: React.FC = () => {
 
           {/* Footer text */}
 
-          <p className="mt-2 text-xs text-gray-500 text-right flex items-center">
-            <span className=" w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center text-xs font-semibold mr-1">i</span>
-            This information is based on last week
-          </p>
+          <div>
+            <hr className="text-gray-200" />
+            <p className="mt-2 text-xs text-gray-500 text-right flex items-center">
+
+              <span className=" w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center text-xs font-semibold mr-1">i</span>
+              This information is based on last week
+            </p>
+          </div>
         </div>
 
         {/* 2) CONVERSATION TREND (BAR) */}
@@ -274,10 +284,15 @@ const AnalyticsSection: React.FC = () => {
           <div className="mt-3 flex-1 h-48">
             <Bar data={conversationData} options={conversationOptions} />
           </div>
-          <p className="mt-2 text-xs text-gray-500 text-right flex items-center">
-            <span className=" w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center text-xs font-semibold mr-1">i</span>
-            Total conversations of the day
-          </p>
+          <div>
+
+            <hr className="text-gray-200" />
+
+            <p className="mt-2 text-xs text-gray-500 text-right flex items-center">
+              <span className=" w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center text-xs font-semibold mr-1">i</span>
+              Total conversations of the day
+            </p>
+          </div>
         </div>
 
         {/* 3) TICKET BY FIRST REPLY TIME (PIE) */}
@@ -312,10 +327,15 @@ const AnalyticsSection: React.FC = () => {
               </ul>
             </div>
           </div>
-          <p className="mt-2 text-xs text-gray-500 text-right flex items-center">
-            <span className=" w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center text-xs font-semibold mr-1">i</span>
-            This information is based on last week
-          </p>
+          <div>
+
+            <hr className="text-gray-200" />
+
+            <p className="mt-2 text-xs text-gray-500 text-right flex items-center">
+              <span className=" w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center text-xs font-semibold mr-1">i</span>
+              This information is based on last week
+            </p>
+          </div>
         </div>
 
         {/* 4) LIVE CHAT TRENDS (LINE) - spans 2 columns */}
@@ -352,6 +372,7 @@ const AnalyticsSection: React.FC = () => {
               </tbody>
             </table>
           </div>
+          <hr className="text-gray-200" />
           <p className="mt-2 text-xs text-gray-500 text-right flex items-center">
             <span className=" w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center text-xs font-semibold mr-1">i</span>
             This information is based on last week

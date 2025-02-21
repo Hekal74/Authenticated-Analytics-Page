@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import UserAvatar from "/assets/user-avatar.png"
 
 interface SideBarProps {
   closeSidebar?: () => void;
@@ -7,7 +8,7 @@ interface SideBarProps {
 
 const SideBar: React.FC<SideBarProps> = ({ closeSidebar, isOpen }) => {
   // Local state to control the visibility of the hide button
-  const [showHideBtn, setShowHideBtn] = useState(true);
+  const [showHideBtn, setShowHideBtn] = useState(false);
 
   // Whenever the sidebar is opened again, reset the hide button to visible
   useEffect(() => {
@@ -24,12 +25,10 @@ const SideBar: React.FC<SideBarProps> = ({ closeSidebar, isOpen }) => {
       closeSidebar();
     }
   };
-
-  return (
-    <div className="relative h-full w-72 p-4 bg-white">
+  return ( 
+    <div className="relative h-full w-64 p-4 bg-white block  ">
       {/* Hide button (only visible when showHideBtn is true) */}
       <div className="hidden lg:block">
-
       {showHideBtn && closeSidebar && (
         <button
           onClick={handleClose}
@@ -40,7 +39,7 @@ const SideBar: React.FC<SideBarProps> = ({ closeSidebar, isOpen }) => {
       )}
       </div>
 
-      {/* Sidebar content */}
+      {/* Sidebar content */} 
       <div className="mt-10 space-y-4">
         <div className="flex items-center space-x-2 p-2 bg-gray-200 rounded-lg">
           <span>📄</span>
@@ -102,7 +101,7 @@ const SideBar: React.FC<SideBarProps> = ({ closeSidebar, isOpen }) => {
       {/* User Data */}
       <div className="mt-6 p-3 flex items-center space-x-3">
         <img
-          src="/src/assets/user-avatar.png"
+          src={UserAvatar}
           alt="User Avatar"
           className="w-10 h-10 rounded-full object-cover"
         />
