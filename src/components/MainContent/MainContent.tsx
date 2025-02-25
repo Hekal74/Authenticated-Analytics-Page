@@ -1,5 +1,5 @@
+import FortisLogo from "/assets/fortis-logo.png";
 import { useState } from "react";
-import AnalyticsSection from "../AnalyticsSection";
 import SideBar from "../SideBar/SideBar";
 import AtlassianLogo from "/assets/atlassiam-logo.png";
 import AmazonLogo from "/assets/aws-logo.png";
@@ -8,30 +8,30 @@ import ZohoLogo from "/assets/zoho-logo.png";
 import MicrosoftLogo from "/assets/microsoft-logo.png";
 import WhatsappLogo from "/assets/whatsapp-logo.png";
 import TelegramLogo from "/assets/telegram-logo.png";
-import InstaLogo from "/assets/insta-logo.png";
+import AnalyticsSection from "../AnalyticsSection";
 import OtherIntegrationLogo from "/assets/image.png";
-import MessengerLogo from "/assets/messanger-logo.png";
+import InstaLogo from "/assets/insta-logo.png";
 import BajajLogo from "/assets/logo-bajaj.png";
 import HyundaiLogo from "/assets/hyundai-logo.png";
+import MessengerLogo from "/assets/messanger-logo.png";
 import ApolloLogo from "/assets/apollo-logo.png";
 import PepsiLogo from "/assets/pepssi-logo.png";
-import FortisLogo from "/assets/fortis-logo.png";
 
 const MainContent = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
     <div className="flex" style={{ backgroundColor: "#FCFCFD" }}>
       {/* Sidebar container (conditionally rendered) */}
       {isSidebarOpen && (
-        <div className="w-64 bg-white shadow-lg z-30 fixed inset-0 lg:relative transition-transform duration-300">
-          <SideBar isOpen={isSidebarOpen} closeSidebar={() => setIsSidebarOpen(false)} />
+        <div className="w-[264px] bg-white  z-30 fixed inset-0  transition-transform duration-300">
+          <SideBar isOpen={isSidebarOpen}  /> 
         </div>
       )}
 
       {/* Button to reopen the sidebar when it's hidden */}
-      {!isSidebarOpen && (
-        <button
+      {!isSidebarOpen && (    
+        <button 
           onClick={() => setIsSidebarOpen(true)}
           className="fixed left-0 top-1/2 transform -translate-y-1/2 z-40 bg-blue-600 text-white p-2 rounded-r-md shadow-lg hidden lg:block"
         >
@@ -40,17 +40,16 @@ const MainContent = () => {
       )}
 
       {/* Main content */}
-      <div className="flex-grow transition-all duration-300">
+      <div className="flex-grow transition-all duration-300 ml-[264px]">
         <div className="p-4 lg:p-8">
-          <div className="lg:text-center text-left">
+          <div className="lg:text-left text-left">
             <h1 className="font-bold text-2xl lg:text-3xl">Welcome to WordWorksAI</h1>
             <p
               className={`font-light text-sm lg:text-base mt-2 lg:max-w-3xl lg: ${isSidebarOpen
-                  ? " text-left"
-                  : "text-left lg:whitespace-nowrap"
+                  ? " text-left" 
+                  : "text-left lg:whitespace-nowrap" 
                 }`}
-
-
+ 
               style={{ color: "#9199B0" }}
             >
               Enhance response accuracy and speed with our Gen AI chatbots, providing instant,

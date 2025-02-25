@@ -1,7 +1,6 @@
 import { useState } from 'react';
 // import { Link } from 'react-router-dom';
 import SideBar from '../SideBar/SideBar';
-import WwaiLogo  from "/assets/wwai-logo.png"
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,10 +11,10 @@ const Header = () => {
     };
 
     return (
-        <div className="header">
-            <div className="flex items-center justify-between p-4 ">
+        <div className="header ml-[264px] h-[64px] border-b-[1px] border-[#DEE1E7] ">
+            <div className="flex items-center justify-between p-4 text-[#20232C]  h-[100px] ">
+                Intoduction
 
-                <img className="w-44 h-8 pl-1" src={WwaiLogo} alt="wwai-logo" />
 
                 {/*  for mobile */}
                 <button className="flex flex-col space-y-2 cursor-pointer lg:hidden" onClick={toggleMenu}>
