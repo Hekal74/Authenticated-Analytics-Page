@@ -11,15 +11,8 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import SearchIcon from "/assets/search-icon.png";
-import CustomerAvatar from "/assets/customer-avater.png";
-import LikeLogo from "/assets/like-logo.png";
-import NaturalLogo from "/assets/natural-logo.png";
-import DislikeLogo from "/assets/dislike-logo.png";
-
+import "remixicon/fonts/remixicon.css";
 import { Bar, Pie, Line } from "react-chartjs-2";
-
-// 1) Register Chart.js components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -31,18 +24,11 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
 const AnalyticsSection: React.FC = () => {
-  // -----------------------------
-  // DATA & OPTIONS
-  // -----------------------------
-  // 1) CUSTOMER SATISFACTION (text-only, no chart)
   const totalCustomers = 156;
   const positive = 80;
   const neutral = 15;
   const negative = 5;
-
-  // 2) CONVERSATION TREND (Bar)
   const conversationData = {
     labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     datasets: [
@@ -50,10 +36,8 @@ const AnalyticsSection: React.FC = () => {
         label: "Conversations",
         data: [5000, 10456, 7500, 20000, 10000, 35000, 1500],
         backgroundColor: "#B0BCEF",
-        hoverBackgroundColor: "#0028CA", // Color when hovering
-
+        hoverBackgroundColor: "#0028CA",
         borderRadius: 4,
-
       },
     ],
   };
@@ -62,10 +46,10 @@ const AnalyticsSection: React.FC = () => {
     maintainAspectRatio: false,
     elements: {
       line: {
-        borderWidth: 1, // Adjust this value to make the lines thinner
+        borderWidth: 1,
       },
       point: {
-        radius: 2, // Optional: Adjust point size if needed
+        radius: 2,
       },
     },
     scales: {
@@ -74,7 +58,6 @@ const AnalyticsSection: React.FC = () => {
         beginAtZero: false,
         ticks: {
           stepSize: 2000,
-
         },
       },
     },
@@ -84,22 +67,20 @@ const AnalyticsSection: React.FC = () => {
         bodyFont: { size: 12 },
       },
     },
-    barThickness: 10, // Fixed thickness for bars
-    maxBarThickness: 20, // Optional: Limit the maximum bar thickness
+    barThickness: 10,
+    maxBarThickness: 20,
   };
-
-  // 3) TICKET BY FIRST REPLY TIME (Pie)
   const ticketReplyData = {
     labels: ["0-1 secs", "1-8 secs", "8-24 secs", "+24 secs", "No replies",],
     datasets: [
       {
         data: [26, 45, 12, 4, 2],
         backgroundColor: [
-          "#3AC828", // green
-          "#FDB02B", // orange
-          "#CB3BFF", // purple
-          "#43DDFF", // cyan
-          "#FD5839", // red
+          "#3AC828",
+          "#FDB02B",
+          "#CB3BFF",
+          "#43DDFF",
+          "#FD5839",
         ],
         borderWidth: 0,
       },
@@ -119,9 +100,6 @@ const AnalyticsSection: React.FC = () => {
       },
     },
   };
-
-
-  // 4) LIVE CHAT TRENDS (Line) - spans two columns
   const liveChatData = {
     labels: ['12 AM', '3 AM', '6 AM', '9 AM', '12 PM', '3 PM', '6 PM', '9 PM'],
     datasets: [
@@ -143,14 +121,12 @@ const AnalyticsSection: React.FC = () => {
       },
     ],
   };
-
-
   const liveChatOptions = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: "bottom" as "top" | "left" | "right" | "bottom", // ✅ Remove 'as const' here
+        position: "bottom" as "top" | "left" | "right" | "bottom",
         labels: {
           font: { size: 12 },
         },
@@ -164,11 +140,7 @@ const AnalyticsSection: React.FC = () => {
         beginAtZero: true,
       },
     },
-
   };
-
-
-  // 5) AVG. HANDLING TIME BY AGENT (Table)
   const agentData = [
     { name: "Shonda James", id: "#MN213", time: "833.09" },
     { name: "Kimberly Mastrangelo", id: "#KN123", time: "792.23" },
@@ -176,209 +148,181 @@ const AnalyticsSection: React.FC = () => {
     { name: "Stephanie Sharkey", id: "#SH213", time: "523.09" },
     { name: "Stephanie Nicol", id: "#SN134", time: "455.23" },
   ];
-
-  // -----------------------------
-  // RENDER
-  // -----------------------------
   return (
-    <div className="mt-8">
-      {/* Page header: "Analytics" on the left, search on the right */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-  <h2 className="font-semibold text-xl text-gray-800">Analytics</h2>
-  <div className="relative w-full sm:w-48 md:w-64">
-    <input
-      type="text"
-      placeholder="Search widget"
-      className="bg-white w-full px-4 py-2 pl-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-    <img
-      src={SearchIcon}
-      alt="search icon"
-      className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 opacity-50 text-left"
-    />
-  </div>
-</div>
-
-
-      {/* Main grid layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6 lg:max-h-90">
-        {/* 1) CUSTOMER SATISFACTION (2×2 text + icons) */}
-        <div className="p-4 border border-gray-200 rounded-lg shadow-sm w-full bg-white flex flex-col justify-between">
-          {/* Card header */}
-          <h3 className="font-medium text-gray-800">Customer satisfaction</h3>
-
-          {/* 2×2 grid: Total responses, Positive, Neutral, Negative */}
-          <div className="grid grid-cols-2 gap-11">
-            {/* Total responses */}
-            <div className="flex flex-col items-start space-x-2 space-y-2">
-              {/* Replace with your own icon path or SVG */}
-              <img
-                src={CustomerAvatar}
-                alt="User icon"
-                className="w-5 h-5 mt-1"
-              />
-              <div>
-                <p className="text-gray-500 text-xs">Total responses</p>
-                <p className="text-gray-800 font-semibold text-base">
-                  {totalCustomers} customers
-                </p>
-              </div>
-            </div>
-
-            {/* Positive */}
-            <div className="flex flex-col items-start space-x-2 space-y-2">
-              <img
-                src={LikeLogo}
-                alt="Thumbs up icon"
-                className="w-5 h-5 mt-1"
-              />
-              <div>
-                <p className="text-gray-500 text-xs">Positive</p>
-                <p className="text-gray-800 font-semibold text-base">{positive}%</p>
-              </div>
-            </div>
-
-            {/* Neutral */}
-            <div className="flex flex-col items-start space-x-2 space-y-2">
-              <img
-                src={NaturalLogo}
-                alt="Neutral icon"
-                className="w-5 h-5 mt-1"
-              />
-              <div>
-                <p className="text-gray-500 text-xs">Neutral</p>
-                <p className="text-gray-800 font-semibold text-base">{neutral}%</p>
-              </div>
-            </div>
-
-            {/* Negative */}
-            <div className="flex flex-col items-start space-x-2 space-y-2">
-              <img
-                src={DislikeLogo}
-                alt="Thumbs down icon"
-                className="w-5 h-5 mt-1"
-              />
-              <div>
-                <p className="text-gray-500 text-xs">Negative</p>
-                <p className="text-gray-800 font-semibold text-base">{negative}%</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Footer text */}
-
-          <div>
-            <hr className="text-gray-200" />
-            <p className="mt-2 text-xs text-gray-500 text-right flex items-center">
-
-              <span className=" w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center text-xs font-semibold mr-1">i</span>
-              This information is based on last week
-            </p>
-          </div>
-        </div>
-
-        {/* 2) CONVERSATION TREND (BAR) */}
-        <div className="p-4 border border-gray-200 rounded-lg shadow-sm flex flex-col bg-white">
-          <p className="font-medium text-gray-800">Conversation trend</p>
-          <p className="text-xl font-bold text-gray-800 mt-2">10,456</p>
-          <div className="mt-3 flex-1 h-48">
-            <Bar data={conversationData} options={conversationOptions} />
-          </div>
-          <div>
-
-            <hr className="text-gray-200" />
-
-            <p className="mt-2 text-xs text-gray-500 text-right flex items-center">
-              <span className=" w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center text-xs font-semibold mr-1">i</span>
-              Total conversations of the day
-            </p>
-          </div>
-        </div>
-
-        {/* 3) TICKET BY FIRST REPLY TIME (PIE) */}
-        <div className="p-4 border border-gray-200 rounded-lg shadow-sm flex flex-col justify-between align-middle bg-white ">
-          <p className="font-medium text-gray-800">Ticket by First Reply Time</p>
-          <div className="flex items-center   ">
-            <div className="w-1/2 h-48 not-even ">
-              <Pie data={ticketReplyData} options={ticketReplyOptions} />
-            </div>
-            <div className="w-1/2 pl-4 ml-4">
-              <ul>
-                <li className="flex items-center mb-2">
-                  <span className="inline-block w-3 h-3 bg-[#3AC828] rounded-full mr-2"></span>
-                  0-1 secs - 26%
-                </li>
-                <li className="flex items-center mb-2">
-                  <span className="inline-block w-3 h-3 bg-[#FDB02B] rounded-full mr-2"></span>
-                  1-8 secs - 45%
-                </li>
-                <li className="flex items-center mb-2">
-                  <span className="inline-block w-3 h-3 bg-[#CB3BFF] rounded-full mr-2"></span>
-                  8-24 secs - 12%
-                </li>
-                <li className="flex items-center mb-2">
-                  <span className="inline-block w-3 h-3 bg-[#43DDFF] rounded-full mr-2"></span>
-                  +24 secs - 4%
-                </li>
-                <li className="flex items-center">
-                  <span className="inline-block w-3 h-3 bg-[#FD5839] rounded-full mr-2"></span>
-                  No replies - 2%
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div>
-
-            <hr className="text-gray-200" />
-
-            <p className="mt-2 text-xs text-gray-500 text-right flex items-center">
-              <span className=" w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center text-xs font-semibold mr-1">i</span>
-              This information is based on last week
-            </p>
-          </div>
-        </div>
-
-        {/* 4) LIVE CHAT TRENDS (LINE) - spans 2 columns */}
-
-        <div className="p-4 border border-gray-200 rounded-lg shadow-sm flex flex-col lg:col-span-2 bg-white">
-          <p className="font-medium text-gray-800">Live chat trends</p>
-          <div className="mt-3 flex-1 h-56">
-
-            <Line data={liveChatData} options={liveChatOptions} />
-          </div>
-
-        </div>
-
-        {/* 5) AVG. HANDLING TIME BY AGENT (TABLE) */}
-        <div className="p-4 border border-gray-200 rounded-lg shadow-sm flex flex-col bg-white">
-          <p className="font-medium text-gray-800">Avg. Handling time by Agent</p>
-          <div className="overflow-x-auto mt-4 flex-1">
-            <table className="min-w-full text-sm text-gray-700">
-              <thead>
-                <tr className="border-b text-gray-600">
-                  <th className="py-2 px-3 font-medium text-left">Name</th>
-                  <th className="py-2 px-3 font-medium text-left">Friend ID</th>
-                  <th className="py-2 px-3 font-medium text-left">Time in secs</th>
-                </tr>
-              </thead>
-              <tbody>
-                {agentData.map((agent, idx) => (
-                  <tr key={idx} className="border-b last:border-none">
-                    <td className="py-2 px-3">{agent.name}</td>
-                    <td className="py-2 px-3">{agent.id}</td>
-                    <td className="py-2 px-3">{agent.time}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <hr className="text-gray-200" />
-          <p className="mt-2 text-xs text-gray-500 text-right flex items-center">
-            <span className=" w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center text-xs font-semibold mr-1">i</span>
-            This information is based on last week
-          </p>
+    <div className="pt-6 ">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between h-9">
+        <h2 className="font-semibold text-[16px] text-[#20232C] pt-[6px]">Analytics</h2>
+        <div className="relative w-[240px]">
+          <input
+            type="text"
+            placeholder="Search widget"
+            className="bg-white px-2 py-2 text-[#9199B0] font-medium rounded-lg text-sm border border-[#DEE1E7] h-9 w-full pr-10 focus:border-[2px] focus:border-[#0028CA] focus:outline-none"
+          />
+          <i className="ri-search-line absolute right-2 top-1/2 -translate-y-1/2 w-5 h-5 text-[#C1C5D2] flex items-center justify-center"></i>
         </div>
       </div>
+      {/* Main  layout */}
+      <div className="mt-2 lg:max-h-90  flex flex-col gap-y-6 w-full  ">
+        <div className="flex flex-row lg:space-x-6 justify-between">
+
+          {/* 1 */}
+          <div className="p-4 border-[1px] border-[#F3F4F6]  rounded-lg  lg:w-[360px] lg:h-[272px] bg-white flex flex-col  ">
+            <h3 className="font-semibold text-sm text-[#20232C] border-b-[1px] border-b-[#F3F4F6] -mx-4 px-4 pb-3">Customer satisfaction</h3>
+            <div className="grid grid-cols-2 gap-11 h-[200px]">
+              <div className="flex flex-col items-start space-x-2 space-y-2 mt-4">
+                <i className="ri-user-voice-line w-4 h-4 text-[#0028CA] "></i>
+                <div>
+                  <p className="text-gray-500 text-xs">Total responses</p>
+                  <p className="text-gray-800 font-semibold text-base">
+                    {totalCustomers} customers
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col items-start space-x-2 space-y-2 mt-4">
+                <i className="ri-thumb-up-line w-4 h-4 text-[#3AC828]"></i>
+                <div>
+                  <p className="text-gray-500 text-xs">Positive</p>
+                  <p className="text-gray-800 font-semibold text-base">{positive}%</p>
+                </div>
+              </div>
+              <div className="flex flex-col items-start space-x-2 space-y-2">
+                <i className="ri-checkbox-blank-circle-line w-4 h-4 text-[#9199B0]"></i>
+                <div>
+                  <p className="text-gray-500 text-xs">Neutral</p>
+                  <p className="text-gray-800 font-semibold text-base">{neutral}%</p>
+                </div>
+              </div>
+              <div className="flex flex-col items-start space-x-2 space-y-2">
+                <i className="ri-thumb-down-line w-4 h-4 text-[#FD5839]"></i>
+                <div>
+                  <p className="text-gray-500 text-xs">Negative</p>
+                  <p className="text-gray-800 font-semibold text-base">{negative}%</p>
+                </div>
+              </div>
+            </div>
+            <div className='h-8'>
+              <p className=" text-xs text-gray-500 text-right flex items-center border-t-[1px] -mx-4 border-t-[#F3F4F6] px-4 py-2 gap-1 ">
+                <i className="ri-information-line text-[#9199B0] w-4 h-4"></i>
+                This information is based on last week
+        
+              </p>
+            </div>
+          </div>
+          {/* 2 */}
+          <div className="p-4 border-[1px] border-[#F3F4F6]  rounded-lg  lg:w-[360px] lg:h-[272px]  flex flex-col bg-white">
+            <p className="font-semibold text-sm text-[#20232C] border-b-[1px] border-b-[#F3F4F6] -mx-4 px-4 pb-3 h-10">Conversation trend</p>
+            <div className="mt-3 flex-1 h-[200px]">
+              <Bar data={conversationData} options={conversationOptions} />
+            </div>
+            <div className='h-8'>
+              <p className=" text-xs text-gray-500 text-right flex items-center border-t-[1px] -mx-4 border-t-[#F3F4F6] px-4 py-2 gap-1 ">
+              <span className="inline-block w-2 h-2 bg-[#B0BCEF]  mr-2 "></span>
+                This information is based on last week
+        
+              </p>
+            </div>
+          </div>
+            
+          {/* 3 */}
+          <div className=" border-[1px] border-[#F3F4F6]  rounded-lg  lg:w-[360px] lg:h-[272px] flex flex-col   bg-white">
+            <p className="font-semibold text-sm text-[#20232C]  -mx-4 px-7 p-3">Ticket by First Reply Time</p>
+            <div className="flex flex-row items-center border-t-[1px] border-t-[#F3F4F6]  gap-1  ">
+              <div className="w-[164px] h-[176px] flex items-center justify-center  ">
+                <div className="w-[136px] h-[136px] ml-5 ">
+                <Pie data={ticketReplyData} options={ticketReplyOptions} />
+                </div>
+              </div>
+              <div className="flex flex-row w-[164px] h-[176px] ">
+              <div className="pt-8 ml-6">
+                <ul className="text-[#9199B0] font-medium text-xs ">
+                  <li className="flex items-center mb-2  ">
+                    <span className=" w-2 h-2 bg-[#3AC828]  mr-2"></span>
+                    0-1 secs 
+                    <span className="ml-12 text-[#20232C] font-semibold text-xs">26%</span>
+                  </li>
+                  <li className="flex items-center mb-2">
+                    <span className="inline-block w-2 h-2 bg-[#FDB02B]  mr-2"></span>
+                    1-8 secs
+                    <span className="ml-12 text-[#20232C] font-semibold text-xs">45%</span>
+                  </li>
+                  <li className="flex items-center mb-2">
+                    <span className="inline-block w-2 h-2 bg-[#CB3BFF]  mr-2"></span>
+                    
+                    8-24 secs 
+                    <span className="ml-11 text-[#20232C] font-semibold text-xs">12%</span>
+                  </li>
+                  <li className="flex items-center mb-2">
+                    <span className="inline-block w-2 h-2 bg-[#43DDFF]  mr-2"></span>
+                    +24 secs
+                    <span className="ml-13 text-[#20232C] font-semibold text-xs">4%</span>
+                  </li>
+                  <li className="flex items-center">
+                    <span className="inline-block w-2 h-2 bg-[#FD5839]  mr-2"></span>
+                    No replies 
+                    <span className="ml-12 text-[#20232C] font-semibold text-xs">2%</span>
+                  </li>
+                </ul>
+              </div>
+              </div>
+            </div>
+            <div className='h-9'>
+              <p className=" text-xs text-gray-500 text-right flex items-center border-t-[1px] -mx-4 border-t-[#F3F4F6] px-4 py-2 gap-1 ">
+                <i className="ri-information-line text-[#9199B0] w-4 h-4"></i>
+                This information is based on last week
+        
+              </p>
+            </div>
+          </div>
+        </div>
+        {/* 4 */}
+        <div className="flex flex-row lg:space-x-6 gap-y-6 w-full justify-between">
+          <div className="p-4 border-[1px] border-[#F3F4F6]  rounded-lg  lg:w-[744px] lg:h-[272px] flex flex-col lg:col-span-2 bg-white lg:mt-6">
+            <p className="font-semibold text-sm text-[#20232C] border-b-[1px] border-b-[#F3F4F6] -mx-4 px-4 pb-3">Live chat trends</p>
+            <div className="mt-3 flex-1 h-56">
+              <Line data={liveChatData} options={liveChatOptions} />
+            </div>
+          </div>
+
+          {/* 5 */}
+          <div className="p-4 border-[1px] border-[#F3F4F6]  rounded-lg  lg:w-[360px] lg:h-[272px] flex flex-col bg-white lg:mt-6">
+            <div className="font-semibold text-sm text-[#20232C] border-b-[1px] border-b-[#F3F4F6] -mx-4 px-4 h-10 ">
+            Avg. Handling time by Agent
+
+            </div>
+      
+            <div className="overflow-x-auto mt-4 flex-1 h-[200px]">
+              <table className="min-w-full text-sm text-gray-700">
+                <thead>
+                  <tr className="border-b text-gray-600">
+                    <th className="py-2 px-3 font-medium text-left">Name</th>
+                    <th className="py-2 px-3 font-medium text-left">Friend ID</th>
+                    <th className="py-2 px-3 font-medium text-left">Time in secs</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {agentData.map((agent, idx) => (
+                    <tr key={idx} className="border-b last:border-none">
+                      <td className="py-2 px-3">{agent.name}</td>
+                      <td className="py-2 px-3">{agent.id}</td>
+                      <td className="py-2 px-3">{agent.time}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+                  <div className="h-[32px]"></div>
+              <p className="mt-2 text-xs text-gray-500 text-right flex items-center border-t-[1px] -mx-4 border-t-[#F3F4F6] px-4 py-4 ">
+                <i className="ri-information-line text-[#9199B0] w-4 h-4"></i>
+                This information is based on last week
+        
+              </p>
+            
+          </div>
+        </div>
+
+      </div>
+
+
     </div>
   );
 };

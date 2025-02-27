@@ -1,7 +1,7 @@
 // import React, { useState  } from "react";
 import UserAvatar from "/assets/user-avatar.png"
 import "remixicon/fonts/remixicon.css";
-import WwaiLogo from "/assets/wwai-logo.png"
+import WwaiLogo from "/assets/W_Logo.svg"
 
 
 
@@ -33,8 +33,8 @@ const SideBar: React.FC<SideBarProps> = () => {
   // };
   return (
     // onClick={() => setIsSidebarOpen(true)
-    <div className=" h-[900px] w-[264px]  bg-white lg:block hidden border-r-[1px] border-[#DEE1E7] ">
-      {/* Hide button (only visible when showHideBtn is true) */}
+<div className="hidden lg:relative  top-0 h-full w-0 lg:w-[264px] bg-white lg:block border-r-[1px] border-[#DEE1E7]">
+{/* Hide button (only visible when showHideBtn is true) */}
       {/* <div className="hidden lg:block">
         {showHideBtn && closeSidebar && (
           <button
@@ -47,48 +47,74 @@ const SideBar: React.FC<SideBarProps> = () => {
       </div> */}
 
       {/* Sidebar content */}
-      <div className="w-[264px] h-[64px] flex   border-b-[1px] border-[#DEE1E7] pt-[17px] pb-[17px] pl-[24px]">
-        <img className="w-[163px]" src={WwaiLogo} alt="wwai-logo" />
+      <div className="lg:w-full w-0  h-[64px] flex   border-b-[1px] border-[#DEE1E7] pt-[17px] pb-[17px] pl-[24px]">
+        <img className="lg:w-[163px] w-0" src={WwaiLogo} alt="wwai-logo" />
       </div>
 
 
-      <div className="w-[216px] h-[432px] p-[24px] ">
-        <div className="flex items-center w-[216px] h-[36px] hover:border hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 p-2 mb-1 group ">
-          <i className="ri-book-2-line w-4 h-4 text-[#9199B0] p-[10px_8px] flex items-center justify-center group-hover:text-black"></i>
-          <span className="w-[176px] h-[20px] text-[#9199B0] group-hover:text-black">Introduction</span>
+      <div className="lg:w-[216px]  p-[24px] ">
+        <a href="">
+        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
+          <i className="ri-book-2-line text-[#9199B0] w-5 h-5 flex items-center justify-center group-hover:text-black"></i>
+          <span className="w-[176px] h-[20px] text-[#9199B0] group-hover:text-black flex items-center">Introduction</span>
         </div>
-        <div className="flex items-center w-[216px] h-[36px] hover:border hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 p-2 mb-1 group">
-          <i className="ri-heart-pulse-line w-4 h-4 text-[#9199B0] p-[10px_8px] flex items-center justify-center group-hover:text-black"></i>
-          <span className="w-[176px] h-[20px] text-[#9199B0] group-hover:text-black">Healthcare</span>
+        </a>
+
+        <a href="">
+        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
+          <i className="ri-heart-pulse-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black"></i>
+          <span className="text-[#9199B0] group-hover:text-black">Healthcare</span>
         </div>
-        <div className="flex items-center w-[216px] h-[36px] hover:border hover:border-[#DEE1E7] hover:bg-[#FCFCFD]  rounded-lg gap-2 p-2 mb-1 group">
-          <i className="ri-car-line w-4 h-4  text-[#9199B0]  p-[10px_8px] flex items-center justify-center group-hover:text-black"></i>
-          <span className="w-[176px] h-[20px]  text-[#9199B0] group-hover:text-black ">Automotive</span>
+        </a>
+        <a href="">
+        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
+          <i className="ri-car-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black"></i>
+          <span className="text-[#9199B0] group-hover:text-black">Automotive</span>
         </div>
-        <div className="flex items-center w-[216px] h-[36px] hover:border hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 p-2 mb-1 group">
-          <i className="ri-handbag-line w-4 h-4  text-[#9199B0]  p-[10px_8px] flex items-center justify-center group-hover:text-black"></i>
-          <span className="w-[176px] h-[20px] text-[#9199B0] group-hover:text-black ">E-commerce</span>
+        </a>
+        
+        <a href="">
+        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
+          <i className="ri-handbag-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black"></i>
+          <span className="text-[#9199B0] group-hover:text-black">E-commerce</span>
         </div>
-        <div className="flex items-center w-[216px] h-[36px] hover:border hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 p-2 mb-1 group">
-          <i className="ri-hand-coin-line w-4 h-4  text-[#9199B0]  p-[10px_8px] flex items-center justify-center group-hover:text-black"></i>
-          <span className="w-[176px] h-[20px] text-[#9199B0]  group-hover:text-black">Retail</span>
+        </a>
+        
+        <a href="">
+        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
+          <i className="ri-hand-coin-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black"></i>
+          <span className="text-[#9199B0] group-hover:text-black">Retail</span>
         </div>
-        <div className="flex items-center w-[216px] h-[36px] hover:border hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 p-2 mb-1 group">
-          <i className="ri-plane-line w-4 h-4  text-[#9199B0]  p-[10px_8px] flex items-center justify-center group-hover:text-black"></i>
-          <span className="w-[176px] h-[20px] text-[#9199B0] group-hover:text-black ">Travel</span>
+        </a>
+        <a href="">
+        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
+          <i className="ri-plane-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black"></i>
+          <span className="text-[#9199B0] group-hover:text-black">Travel</span>
         </div>
-        <div className="flex items-center w-[216px] h-[36px] hover:border hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 p-2 mb-1 group">
-          <i className="ri-money-dollar-circle-line w-4 h-4  text-[#9199B0]  p-[10px_8px] flex items-center justify-center group-hover:text-black"></i>
-          <span className="w-[176px] h-[20px] text-[#9199B0] group-hover:text-black ">financial</span>
+        </a>
+        
+        <a href="">
+        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
+          <i className="ri-money-dollar-circle-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black"></i>
+          <span className="text-[#9199B0] group-hover:text-black">Financial</span>
         </div>
-        <div className="flex items-center w-[216px] h-[36px]  hover:border hover:border-[#DEE1E7] hover:bg-[#FCFCFD] not-last:rounded-lg gap-2 p-2 mb-1 group">
-          <i className="ri-building-2-line w-4 h-4  text-[#9199B0]  p-[10px_8px] flex items-center justify-center group-hover:text-black"></i>
-          <span className="w-[176px] h-[20px] text-[#9199B0] group-hover:text-black ">Read estate</span>
+        </a>
+        
+        <a href="">
+        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
+          <i className="ri-building-2-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black"></i>
+          <span className="text-[#9199B0] group-hover:text-black">Real Estate</span>
         </div>
-        <div className="flex items-center w-[216px] h-[36px] hover:border hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 p-2 mb-1 group">
-          <i className="ri-tools-line w-4 h-4  text-[#9199B0]  p-[10px_8px] flex items-center justify-center group-hover:text-black"></i>
-          <span className="w-[176px] h-[20px] text-[#9199B0] group-hover:text-black ">Manfacturing</span>
+        </a>
+        
+        <a href="">
+        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
+          <i className="ri-tools-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black"></i>
+          <span className="text-[#9199B0] group-hover:text-black">Manufacturing</span>
         </div>
+        </a>
+        
+
       </div>
 
       {/* Rate Us section */}
@@ -102,29 +128,32 @@ const SideBar: React.FC<SideBarProps> = () => {
       </button>
 
       {/* Plan Information */}
-      <div className="my-4 mx-6 pl-2 bg-white hover:bg-[#E6EAFA] w-[216px] h-[52px] rounded-lg flex items-center space-x-2 text-[#0028CA]">
-        <div className="bg-white rounded-full  ">
-          <i className="ri-history-line "></i>
+      <div className="">
+        {/* 12 days left */}
+        <div className=" absolute bottom-[92px]  mx-6 pl-2 bg-[#E6EAFA] w-[216px] h-[52px] rounded-lg flex items-center space-x-2 text-[#0028CA]">
+          <div className=" rounded-full w-[32px] h-[32px] flex items-center justify-center">
+            <i className="ri-history-line"></i>
+          </div>
+          <div>
+            <p className="text-sm font-semibold">12 days left</p>
+            <p className="text-xs text-[#656E8B]">Get the full version now</p>
+          </div>
         </div>
 
-        <div>
-          <p className="text-sm font-medium">12 days left</p>
-          <p className="text-xs text-[#656E8B]">Get the full version now</p>
+        {/* User Data */}
+        <div className="absolute bottom-6  mx-6 pl-2 flex items-center space-x-3 hover:bg-[#F3F4F6] hover:border-[#C1C5D2]  rounded-lg w-[216px] h-[52px] border-[1px] border-[#DEE1E7]">
+          <img
+            src={UserAvatar}
+            alt="User Avatar"
+            className="w-[32px] h-[32px] rounded-full object-cover"
+          />
+          <div>
+            <p className="text-sm font-medium text-[#20232C]">M. Hussain</p>
+            <p className="text-xs text-[#9199B0]">Admin</p>
+          </div>
         </div>
       </div>
 
-      {/* User Data */}
-      <div className="my-4 mx-6 pl-2 flex items-center space-x-3 hover:bg-[#E6EAFA] rounded-lg w-[216px] h-[52px] ">
-        <img
-          src={UserAvatar}
-          alt="User Avatar"
-          className="w-10 h-10 rounded-full object-cover"
-        />
-        <div>
-          <p className="text-sm font-medium text-[#20232C]">M. Hussain</p>
-          <p className="text-xs text-[#9199B0]">Admin</p>
-        </div>
-      </div>
     </div>
   );
 };
