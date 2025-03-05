@@ -1,11 +1,42 @@
 import { useState } from 'react';
 // import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'; 
+
 import SideBar from '../SideBar/SideBar';
 import "remixicon/fonts/remixicon.css";
 
 
 const Header = () => {
+    // const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const location = useLocation(); // Get current path
+
+    // Function to get the title based on the path
+    const getTitle = () => {
+        switch (location.pathname) {
+            case '/introduction':
+                return 'Introduction';
+            case '/health-care':
+                return 'Healthcare';
+            case '/automotive':
+                return 'Automotive';
+                case '/e-commerce':
+                    return 'E-Commerece';
+            case '/retail':
+                return 'Retail';
+            case '/travel':
+                return 'Travel';
+            case '/financial':
+                return 'Financial';
+            case '/real-estate':
+                return 'Real Estate'; 
+            case '/manufacturing': 
+                return 'Manufacturing';
+
+            default:
+                return 'Dashboard'; // Default title
+        }
+    };
 
 
     const toggleMenu = () => {
@@ -15,9 +46,9 @@ const Header = () => {
     return (
         <div className="header fixed top-0 right-0 left-0 z-50  lg:ml-[264px] h-[64px] border-b-[1px] border-[#DEE1E7] bg-white  ">
             {/* <div className=" fixed top-0 lg:left-0 z-50   w-full bg-white "> */}
-            <div className="flex font-semibold  justify-between items-center px-6 text-[#20232C]  h-full ">
+            <div className="flex font-semibold  justify-between items-center p-4 lg:p-6  text-[#20232C]  h-full ">
 
-                Introduction
+            {getTitle()}
 
 
                 {/*  for mobile */}

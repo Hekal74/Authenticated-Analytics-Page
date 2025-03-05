@@ -1,118 +1,91 @@
-// import React, { useState  } from "react";
-import UserAvatar from "/assets/user-avatar.png"
+// import UserAvatar from "/assets/user-avatar.png"
 import "remixicon/fonts/remixicon.css";
-import WwaiLogo from "/assets/W_Logo.svg"
+// import WwaiLogo from "/assets/W_Logo.svg"
+import { Link, useLocation  } from "react-router-dom";
 
 
 
 interface SideBarProps {
   closeSidebar?: () => void;
-  isOpen: boolean; // New prop to track if the sidebar is open
+  isOpen?: boolean; 
+
 }
+  
+  const SideBar: React.FC<SideBarProps> = () => {
 
+    const location = useLocation();
 
-const SideBar: React.FC<SideBarProps> = () => {
-  // const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  // Local state to control the visibility of the hide button
-  // const [showHideBtn, setShowHideBtn] = useState(false);
-
-  // Whenever the sidebar is opened again, reset the hide button to visible
-  // useEffect(() => {
-  //   if (isOpen) {
-  //     setShowHideBtn(true);
-  //   }
-  // }, [isOpen]);
-
-  // const handleClose = () => {
-  //   // Hide the close button immediately
-  //   setShowHideBtn(false);
-  //   // Call the parent's closeSidebar function to hide the sidebar
-  //   if (closeSidebar) {
-  //     closeSidebar();
-  //   }
-  // };
   return (
-    // onClick={() => setIsSidebarOpen(true)
-<div className="hidden lg:relative  top-0 h-full w-0 lg:w-[264px] bg-white lg:block border-r-[1px] border-[#DEE1E7]">
-{/* Hide button (only visible when showHideBtn is true) */}
-      {/* <div className="hidden lg:block">
-        {showHideBtn && closeSidebar && (
-          <button
-            onClick={handleClose}
-            className="absolute top-4 right-[-20px] bg-blue-600 text-white p-2 rounded-r-md shadow-lg"
-          >
-            &lt;
-          </button>
-        )}
-      </div> */}
+<div className="hidden lg:relative  top-0 h-full  w-[264px] bg-white lg:block  border-r-[1px] border-[#DEE1E7]">
 
-      {/* Sidebar content */}
       <div className="lg:w-full w-0  h-[64px] flex   border-b-[1px] border-[#DEE1E7] pt-[17px] pb-[17px] pl-[24px]">
-        <img className="lg:w-[163px] w-0" src={WwaiLogo} alt="wwai-logo" />
+        {/* <img className="lg:w-[163px] w-0" src={WwaiLogo} alt="wwai-logo" /> */}
+        <span className="text-[#263978] font-bold text-lg">WORDWORKS</span>
+      <span className="text-[#04CCFB] font-bold text-lg pl-1">AI</span>
+      
       </div>
 
 
       <div className="lg:w-[216px]  p-[24px] ">
-        <a href="">
-        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
-          <i className="ri-book-2-line text-[#9199B0] w-5 h-5 flex items-center justify-center group-hover:text-black"></i>
-          <span className="w-[176px] h-[20px] text-[#9199B0] group-hover:text-black flex items-center">Introduction</span>
+        <Link to="/introduction">
+        <div className={`flex items-center w-[216px] h-[36px]   rounded-md gap-2 px-2 mb-1 group ${location.pathname === "/introduction" ? " bg-[#E6EAFA] text-black" : "border-transparent  hover:bg-[#E6EAFA]"}`} >
+          <i className={`ri-book-2-line text-[#9199B0] w-5 h-5 flex items-center justify-center group-hover:text-black ${location.pathname === "/introduction" ? "text-black" : "text-[#9199B0]"} `}></i>
+          <span className={`w-[176px] h-[20px]  group-hover:text-[#0028CA] ${location.pathname === "/introduction" ? "text-[#0028CA]" : "text-[#9199B0]"} flex items-center`}>Introduction</span>
         </div>
-        </a>
-
-        <a href="">
-        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
-          <i className="ri-heart-pulse-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black"></i>
-          <span className="text-[#9199B0] group-hover:text-black">Healthcare</span>
+        </Link>
+        <Link to="/health-care">
+        <div className={`flex items-center w-[216px] h-[36px]    rounded-md gap-2 px-2 mb-1 group ${location.pathname === "/health-care" ? " bg-[#E6EAFA] text-black" : "border-transparent  hover:bg-[#E6EAFA]"}`}>
+          <i className={`ri-heart-pulse-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black ${location.pathname === "/health-care" ? "text-black" : "text-[#9199B0]"} `}></i>
+          <span className={` flex items-center w-[176px] h-[20px] group-hover:text-[#0028CA] ${location.pathname === "/health-care" ? "text-[#0028CA]" : "text-[#9199B0]"} `}>Healthcare</span>
         </div>
-        </a>
-        <a href="">
-        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
-          <i className="ri-car-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black"></i>
-          <span className="text-[#9199B0] group-hover:text-black">Automotive</span>
+        </Link>
+        <Link to="/automotive">
+        <div className={`flex items-center w-[216px] h-[36px] rounded-md  gap-2 px-2 mb-1 group ${location.pathname === "/automotive" ? " bg-[#E6EAFA] text-black" : "border-transparent  hover:bg-[#E6EAFA]"}`}>
+          <i className={`ri-car-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black ${location.pathname === "/automotive" ? "text-black" : "text-[#9199B0]"} `}></i>
+          <span className={` flex items-center w-[176px] h-[20px] group-hover:text-[#0028CA] ${location.pathname === "/automotive" ? "text-[#0028CA]" : "text-[#9199B0]"} `}>Automotive</span>
         </div>
-        </a>
+        </Link>
         
-        <a href="">
-        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
-          <i className="ri-handbag-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black"></i>
-          <span className="text-[#9199B0] group-hover:text-black">E-commerce</span>
+        <Link to="/e-commerce">
+        <div className={`flex items-center w-[216px] h-[36px] rounded-md  gap-2 px-2 mb-1 group ${location.pathname === "/e-commerce" ? " bg-[#E6EAFA] text-black" : "border-transparent  hover:bg-[#E6EAFA]"}`}>
+          <i className={`ri-car-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black ${location.pathname === "/e-commerce" ? "text-black" : "text-[#9199B0]"} `}></i>
+          <span className={` flex items-center w-[176px] h-[20px] group-hover:text-[#0028CA] ${location.pathname === "/e-commerce" ? "text-[#0028CA]" : "text-[#9199B0]"} `}>E-commerce</span>
         </div>
-        </a>
+        </Link>
         
-        <a href="">
-        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
-          <i className="ri-hand-coin-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black"></i>
-          <span className="text-[#9199B0] group-hover:text-black">Retail</span>
+        <Link to="/retail">
+        <div className={`flex items-center w-[216px] h-[36px] rounded-md  gap-2 px-2 mb-1 group ${location.pathname === "/retail" ? " bg-[#E6EAFA] text-black" : "border-transparent  hover:bg-[#E6EAFA]"}`}>
+          <i className={`ri-car-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black ${location.pathname === "/retail" ? "text-black" : "text-[#9199B0]"} `}></i>
+          <span className={` flex items-center w-[176px] h-[20px] group-hover:text-[#0028CA] ${location.pathname === "/retail" ? "text-[#0028CA]" : "text-[#9199B0]"} `}>Retail</span>
         </div>
-        </a>
-        <a href="">
-        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
-          <i className="ri-plane-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black"></i>
-          <span className="text-[#9199B0] group-hover:text-black">Travel</span>
+        </Link>
+        <Link to="/travel">
+        <div className={`flex items-center w-[216px] h-[36px] rounded-md  gap-2 px-2 mb-1 group ${location.pathname === "/travel" ? " bg-[#E6EAFA] text-black" : "border-transparent  hover:bg-[#E6EAFA]"}`}>
+          <i className={`ri-car-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black ${location.pathname === "/travel" ? "text-black" : "text-[#9199B0]"} `}></i>
+          <span className={` flex items-center w-[176px] h-[20px] group-hover:text-[#0028CA] ${location.pathname === "/travel" ? "text-[#0028CA]" : "text-[#9199B0]"} `}>Travel</span>
         </div>
-        </a>
+        </Link>
         
-        <a href="">
-        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
-          <i className="ri-money-dollar-circle-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black"></i>
-          <span className="text-[#9199B0] group-hover:text-black">Financial</span>
+        <Link to="/financial">
+        <div className={`flex items-center w-[216px] h-[36px] rounded-md  gap-2 px-2 mb-1 group ${location.pathname === "/financial" ? " bg-[#E6EAFA] text-black" : "border-transparent  hover:bg-[#E6EAFA]"}`}>
+          <i className={`ri-car-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black ${location.pathname === "/financial" ? "text-black" : "text-[#9199B0]"} `}></i>
+          <span className={` flex items-center w-[176px] h-[20px] group-hover:text-[#0028CA] ${location.pathname === "/financial" ? "text-[#0028CA]" : "text-[#9199B0]"} `}>Financial</span>
         </div>
-        </a>
+        </Link>
         
-        <a href="">
-        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
-          <i className="ri-building-2-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black"></i>
-          <span className="text-[#9199B0] group-hover:text-black">Real Estate</span>
+        <Link to="/real-estate">
+        <div className={`flex items-center w-[216px] h-[36px] rounded-md  gap-2 px-2 mb-1 group ${location.pathname === "/real-estate" ? " bg-[#E6EAFA] text-black" : "border-transparent  hover:bg-[#E6EAFA]"}`}>
+          <i className={`ri-car-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black ${location.pathname === "/real-estate" ? "text-black" : "text-[#9199B0]"} `}></i>
+          <span className={` flex items-center w-[176px] h-[20px] group-hover:text-[#0028CA] ${location.pathname === "/real-estate" ? "text-[#0028CA]" : "text-[#9199B0]"} `}>Real Estate</span>
         </div>
-        </a>
+        </Link>
         
-        <a href="">
-        <div className="flex items-center w-[216px] h-[36px] border border-transparent hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 px-2 mb-1 group">
-          <i className="ri-tools-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black"></i>
-          <span className="text-[#9199B0] group-hover:text-black">Manufacturing</span>
+        <Link to="/manufacturing">
+        <div className={`flex items-center w-[216px] h-[36px] rounded-md  gap-2 px-2 mb-1 group ${location.pathname === "/manufacturing" ? " bg-[#E6EAFA] text-black" : "border-transparent  hover:bg-[#E6EAFA]"}`}>
+          <i className={`ri-car-line w-4 h-4 text-[#9199B0] flex items-center justify-center group-hover:text-black ${location.pathname === "/manufacturing" ? "text-black" : "text-[#9199B0]"} `}></i>
+          <span className={` flex items-center w-[176px] h-[20px] group-hover:text-[#0028CA] ${location.pathname === "/manufacturing" ? "text-[#0028CA]" : "text-[#9199B0]"} `}>Manufacturing</span>
         </div>
-        </a>
+        </Link>
         
 
       </div>
@@ -130,7 +103,7 @@ const SideBar: React.FC<SideBarProps> = () => {
       {/* Plan Information */}
       <div className="">
         {/* 12 days left */}
-        <div className=" absolute bottom-[92px]  mx-6 pl-2 bg-[#E6EAFA] w-[216px] h-[52px] rounded-lg flex items-center space-x-2 text-[#0028CA]">
+        {/* <div className=" absolute bottom-[92px]  mx-6 pl-2 bg-[#E6EAFA] w-[216px] h-[52px] rounded-lg flex items-center space-x-2 text-[#0028CA]">
           <div className=" rounded-full w-[32px] h-[32px] flex items-center justify-center">
             <i className="ri-history-line"></i>
           </div>
@@ -138,15 +111,18 @@ const SideBar: React.FC<SideBarProps> = () => {
             <p className="text-sm font-semibold">12 days left</p>
             <p className="text-xs text-[#656E8B]">Get the full version now</p>
           </div>
-        </div>
+        </div> */}
 
         {/* User Data */}
-        <div className="absolute bottom-6  mx-6 pl-2 flex items-center space-x-3 hover:bg-[#F3F4F6] hover:border-[#C1C5D2]  rounded-lg w-[216px] h-[52px] border-[1px] border-[#DEE1E7]">
-          <img
+        <div className="absolute bottom-6  mx-6 pl-2 flex items-center space-x-3 w-[216px] h-[52px]   rounded-lg  ">
+          {/* <img
             src={UserAvatar}
             alt="User Avatar"
-            className="w-[32px] h-[32px] rounded-full object-cover"
-          />
+            className="w- h-8rounded-full object-cover"
+          /> */}
+          <div className=" w-8 h-8 flex items-center justify-center bg-[#04CCFB] text-white text-xs font-bold rounded-full">
+      MH
+    </div>
           <div>
             <p className="text-sm font-medium text-[#20232C]">M. Hussain</p>
             <p className="text-xs text-[#9199B0]">Admin</p>
@@ -156,6 +132,6 @@ const SideBar: React.FC<SideBarProps> = () => {
 
     </div>
   );
-};
+}; 
 
 export default SideBar;

@@ -61,8 +61,8 @@ const SideBar: React.FC<SideBarProps> = ({ closeSidebar, isOpen }) => {
         </div>
         <div className="flex items-center w-[216px] h-[36px] hover:border hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 p-2 mb-1">
           <i className="ri-hand-coin-line w-4 h-4 text-black p-[10px_8px] flex items-center justify-center"></i>
-          <span className="w-[176px] h-[20px]">Retail</span>
-        </div>
+          <span className="w-[176px] h-[20px]">Retail</span>el 
+        </div> 
         <div className="flex items-center w-[216px] h-[36px] hover:border hover:border-[#DEE1E7] hover:bg-[#FCFCFD] rounded-lg gap-2 p-2 mb-1">
           <i className="ri-plane-line w-4 h-4 text-black p-[10px_8px] flex items-center justify-center"></i>
           <span className="w-[176px] h-[20px]">Travel</span>
