@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -26,11 +26,29 @@ ChartJS.register(
   Legend
 );
 
-const AnalyticsSection: React.FC = () => {
+const AnalyticsSection = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkIfMobile();
+    
+    // Add event listener
+    window.addEventListener('resize', checkIfMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+
   const totalCustomers = 156;
   const positive = 80;
   const neutral = 15;
   const negative = 5;
+  
   const conversationData = {
     labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     datasets: [
@@ -43,6 +61,7 @@ const AnalyticsSection: React.FC = () => {
       },
     ],
   };
+  
   const conversationOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -52,7 +71,13 @@ const AnalyticsSection: React.FC = () => {
     },
     scales: {
       x: { grid: { display: false } },
-      y: { beginAtZero: false, ticks: { stepSize: 2000 } },
+      y: { 
+        beginAtZero: false, 
+        ticks: { 
+          stepSize: 2000,
+          display: !isMobile // Only show y-axis ticks on larger screens
+        } 
+      },
     },
     plugins: {
       legend: { display: false },
@@ -61,6 +86,7 @@ const AnalyticsSection: React.FC = () => {
     barThickness: 10,
     maxBarThickness: 20,
   };
+  
   const ticketReplyData = {
     labels: ["0-7 secs",  "8-24 secs", "+24 secs", "No replies"],
     datasets: [
@@ -76,6 +102,7 @@ const AnalyticsSection: React.FC = () => {
       },
     ],
   };
+  
   const ticketReplyOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -84,6 +111,7 @@ const AnalyticsSection: React.FC = () => {
       tooltip: { bodyFont: { size: 12 } },
     },
   };
+  
   const liveChatData = {
     labels: [
       "12 AM",
@@ -114,20 +142,31 @@ const AnalyticsSection: React.FC = () => {
       },
     ],
   };
+  
+  // Fix: Define a valid position type that Chart.js expects
+  const topPosition = "top" as const;
+  const bottomPosition = "bottom" as const;
+  
   const liveChatOptions = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: "bottom" as "top" | "left" | "right" | "bottom",
+        position: isMobile ? topPosition : bottomPosition,
         labels: { font: { size: 12 } },
       },
       tooltip: { bodyFont: { size: 12 } },
     },
     scales: {
-      y: { beginAtZero: true },
+      y: { 
+        beginAtZero: true,
+        ticks: {
+          display: !isMobile // Only show y-axis ticks on larger screens
+        }
+      },
     },
   };
+  
   const agentData = [
     { name: "Mary Freund", id: "#PK234D", time: "333.09" },
     { name: "Kimberly Mastrangelo", id: "#PK234D", time: "122.11" },
@@ -136,12 +175,13 @@ const AnalyticsSection: React.FC = () => {
   ];
 
   return (
-    <div className="pt-6">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between h-9">
-        <h2 className="font-semibold text-[16px] text-[#20232C] pt-[6px]">
+    // Modified to take full width by removing width constraints and adjusting padding
+    <div className="pt-6 w-full px-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between h-auto sm:h-9 mb-4">
+        <h2 className="font-semibold text-[16px] text-[#20232C] mb-2 sm:mb-0">
           Analytics
         </h2>
-        <div className="relative w-[240px]">
+        <div className="relative w-full sm:w-[240px]">
           <input
             type="text"
             placeholder="Search widget"
@@ -151,12 +191,12 @@ const AnalyticsSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Layout */}
-      <div className="mt-2 lg:max-h-90 flex flex-col gap-y-6 w-full">
-        {/* First Row of Cards */}
-        <div className="flex flex-col lg:flex-row lg:space-x-6 justify-between">
-          {/* Card 1 */}
-          <div className="w-full lg:w-[360px] p-4 border border-[#F3F4F6] rounded-lg lg:h-[272px] bg-white flex flex-col">
+      {/* Main Layout - Modified to use full width */}
+      <div className="mt-2 flex flex-col gap-4 w-full">
+        {/* First Row of Cards - Modified for full width responsiveness */}
+        <div className="flex flex-col lg:flex-row gap-4 w-full">
+          {/* Card 1 - Customer Satisfaction */}
+          <div className="w-full lg:flex-1 p-4 border border-[#F3F4F6] rounded-lg bg-white flex flex-col">
             <p className="font-semibold text-sm text-[#20232C] border-b border-[#F3F4F6] -mx-4 px-4 pb-3">
               Customer satisfaction
             </p>
@@ -200,67 +240,69 @@ const AnalyticsSection: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="h-10">
+            <div className="h-10 mt-auto">
               <p className="text-xs text-[#9199B0] font-medium flex items-center border-t border-[#F3F4F6] -mx-4 px-4 py-4 gap-1 h-full">
                 <i className="ri-information-line text-[#9199B0] w-4 h-4"></i>
                 This information is based on last week
               </p>
             </div>
           </div>
-          {/* Card 2 */}
-          <div className="w-full lg:w-[360px] p-4 border border-[#F3F4F6] rounded-lg lg:h-[272px] flex flex-col bg-white mt-6 lg:mt-0">
+          
+          {/* Card 2 - Conversation Trend */}
+          <div className="w-full lg:flex-1 p-4 border border-[#F3F4F6] rounded-lg flex flex-col bg-white">
             <p className="font-semibold text-sm text-[#20232C] border-b border-[#F3F4F6] -mx-4 px-4 pb-3">
               Conversation trend
             </p>
-            <div className="mt-3 flex-1 max-h-[200px]">
+            <div className="mt-3 flex-1 h-[200px]">
               <Bar data={conversationData} options={conversationOptions} />
             </div>
-            <div className="max-h-8">
+            <div className="h-10 mt-auto">
               <p className="text-xs text-[#9199B0] font-medium flex items-center border-t border-[#F3F4F6] -mx-4 px-4 py-4 gap-1">
                 <span className="inline-block w-2 h-2 bg-[#B0BCEF] mr-2"></span>
                 This information is based on last week
               </p>
             </div>
           </div>
-          {/* Card 3 */}
-          <div className="w-full lg:w-[360px] border border-[#F3F4F6] rounded-lg lg:h-[272px] flex flex-col bg-white mt-6 lg:mt-0">
-            <p className="font-semibold text-sm text-[#20232C] -mx-4 px-7 p-3">
+          
+          {/* Card 3 - Ticket by First Reply Time */}
+          <div className="w-full lg:flex-1 border border-[#F3F4F6] rounded-lg flex flex-col bg-white">
+            <p className="font-semibold text-sm text-[#20232C] px-4 py-3">
               Ticket by First Reply Time
             </p>
             <div className="flex flex-row items-center border-t border-[#F3F4F6] gap-1">
-              <div className="w-[164px] h-[176px] flex items-center justify-center">
-                <div className="w-[136px] h-[136px] ml-5">
+              <div className="w-1/2 h-[176px] flex items-center justify-center">
+                <div className="w-[136px] h-[136px] ml-0 sm:ml-5">
                   <Pie data={ticketReplyData} options={ticketReplyOptions} />
                 </div>
               </div>
-              <div className="flex flex-row w-[164px] h-[176px]">
-                <div className="pt-8 ml-6">
+              <div className="flex flex-row w-1/2 h-[176px]">
+                <div className="pt-8 ml-0 sm:ml-6">
                   <ul className="text-[#9199B0] font-medium text-xs">
                     <li className="flex items-center mb-2">
                       <span className="w-2 h-2 bg-[#1DD57F] mr-2"></span>
                       0-7 secs
-                      <span className="ml-[49px] text-[#20232C] font-semibold text-xs">
+                      <span className="ml-2 sm:ml-[49px] text-[#20232C] font-semibold text-xs">
                         25%
                       </span>
                     </li>
                     <li className="flex items-center mb-2">
                       <span className="inline-block w-2 h-2 bg-[#6A29D3] mr-2"></span>
                       8-24 secs
-                      <span className="ml-[42px] text-[#20232C] font-semibold text-xs">
+                      <span className="ml-2 sm:ml-[42px] text-[#20232C] font-semibold text-xs">
                         25%
                       </span>
                     </li>
                     <li className="flex items-center mb-2">
                       <span className="inline-block w-2 h-2 bg-[#2868F3] mr-2"></span>
                       +24 secs
-                      <span className="ml-[46px] text-[#20232C] font-semibold text-xs">
+                      <span className="ml-2 sm:ml-[46px] text-[#20232C] font-semibold text-xs">
                         40%
                       </span>
                     </li>
                     <li className="flex items-center">
                       <span className="inline-block w-2 h-2 bg-[#E68C33] mr-2"></span>
                       No replies
-                      <span className="ml-10 text-[#20232C] font-semibold text-xs">
+                      <span className="ml-2 sm:ml-10 text-[#20232C] font-semibold text-xs">
                         10%
                       </span>
                     </li>
@@ -268,7 +310,7 @@ const AnalyticsSection: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="h-8">
+            <div className="h-10 mt-auto">
               <p className="text-xs text-[#9199B0] font-medium flex items-center border-t border-[#F3F4F6] px-4 py-4 gap-1">
                 <i className="ri-information-line text-[#9199B0] w-4 h-4"></i>
                 This information is based on last week
@@ -277,40 +319,47 @@ const AnalyticsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Second Row of Cards */}
-        <div className="flex flex-col lg:flex-row lg:space-x-6 gap-y-6 w-full justify-between mt-6">
-          {/* Card 4 */}
-          <div className="w-full lg:w-[744px] hidden p-4 border border-[#F3F4F6] rounded-lg lg:h-[272px] lg:flex flex-col bg-white">
+        {/* Second Row of Cards - Modified for full width */}
+        <div className="flex flex-col lg:flex-row gap-4 w-full">
+          {/* Card 4 - Live Chat Trends - made more responsive */}
+          <div className="w-full lg:w-2/3 p-4 border border-[#F3F4F6] rounded-lg flex flex-col bg-white">
             <p className="font-semibold text-sm text-[#20232C] border-b border-[#F3F4F6] -mx-4 px-4 pb-3">
               Live chat trends
             </p>
-            <div className="mt-3 flex-1">
+            <div className="mt-3 flex-1 h-[200px]">
               <Line data={liveChatData} options={liveChatOptions} />
             </div>
+            <div className="h-10 mt-auto">
+              <p className="text-xs text-[#9199B0] font-medium flex items-center border-t border-[#F3F4F6] -mx-4 px-4 py-4 gap-1">
+                <i className="ri-information-line text-[#9199B0] w-4 h-4"></i>
+                This information is based on last week
+              </p>
+            </div>
           </div>
-          {/* Card 5 */}
-          <div className="w-full lg:w-[360px] p-4 border border-[#F3F4F6] rounded-lg lg:h-[272px] flex flex-col bg-white mb-5">
-            <div className="font-semibold text-sm text-[#20232C] border-b border-[#F3F4F6] -mx-4 px-4 h-10">
+          
+          {/* Card 5 - Avg. Handling Time by Agent */}
+          <div className="w-full lg:w-1/3 p-4 border border-[#F3F4F6] rounded-lg flex flex-col bg-white">
+            <div className="font-semibold text-sm text-[#20232C] border-b border-[#F3F4F6] -mx-4 px-4 py-3">
               Avg. Handling time by Agent
             </div>
-            <div className="h-[200px]">
+            <div className="h-[200px] overflow-y-auto">
               <div className="p-3 flex flex-col gap-3">
                 <div className="flex w-full gap-2 text-left text-[#C1C5D2] text-xs font-semibold">
                   <div className="w-16">ID</div>
-                  <div className="w-[150px]">Name</div>
-                  <div className="w-[105px] text-left">Time(in sec)</div>
+                  <div className="flex-1">Name</div>
+                  <div className="w-24 text-left">Time(in sec)</div>
                 </div>
                 {agentData.map((agent, idx) => (
-                  <div key={idx} className="flex gap-2 text-[#9199B0] text-xs font-md ">
+                  <div key={idx} className="flex gap-2 text-[#9199B0] text-xs font-medium">
                     <div className="w-16">{agent.id}</div>
-                    <div className="w-[150px]">{agent.name}</div>
-                    <div className="w-[92px] text-[#20232C]">{agent.time}</div>
+                    <div className="flex-1">{agent.name}</div>
+                    <div className="w-24 text-[#20232C]">{agent.time}</div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="h-[32px]">
-              <p className="text-xs text-[#9199B0] font-medium flex items-center border-t border-[#F3F4F6] -mx-4 px-4 py-4">
+            <div className="h-10 mt-auto">
+              <p className="text-xs text-[#9199B0] font-medium flex items-center border-t border-[#F3F4F6] -mx-4 px-4 py-4 gap-1">
                 <i className="ri-information-line text-[#9199B0] w-4 h-4"></i>
                 This information is based on last week
               </p>

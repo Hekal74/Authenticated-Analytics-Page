@@ -4,6 +4,7 @@ import finance1 from '../../../public/assets/finance1.png';
 import finance2 from '../../../public/assets/finance2.png';
 import finance3 from '../../../public/assets/finance3.png';
 import finance4 from '../../../public/assets/finance4.png';
+import OkasBot from '../Okas';
 
 
 // Define the structure of a use case
@@ -56,12 +57,12 @@ const UseCase: React.FC<UseCase> = ({ title, description, image, customHeight = 
   );  
 };
  
-const Finance: React.FC = () => {
+const Travel: React.FC = () => {
   return (
     <div className='p-6 bg-[#FCFCFD] w-full'>
       <div className="container mx-auto">
         <div className="mb-6">
-          <h1 className="font-semibold text-2xl text-[#20232C] mb-2">Finance</h1>
+          <h1 className="font-semibold text-2xl text-[#20232C] mb-2">Travel</h1>
           <p className="font-medium text-sm text-[#9199B0]">
             Empowering financial institutions with Gen-AI chatbots and voicebots for efficient 24/7 customer support, 
             personalized assistance, and seamless financial services.
@@ -93,8 +94,15 @@ const Finance: React.FC = () => {
           </div>
         </div>
       </div>
+      <div className='flex flex-col gap-20 '>
+
+        <div>
+          <OkasBot />
+        </div>
+        
+      </div>
     </div>
   );
 };
 
-export default Finance;
+export default Travel;

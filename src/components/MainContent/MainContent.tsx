@@ -19,53 +19,52 @@ import FortisLogo from "/assets/Logo Box-14.svg";
 
 const MainContent = () => { 
   // const [isSidebarOpen, setIsSidebarOpen] = useState(true); 
-   return (
-    <div className="flex bg-[#FCFCFD] h-[920px] flex-1" > 
-
-      <div className="flex-grow transition-all duration-300  ">
-        <div className="p-4 lg:p-6 ">
-          <div className='h-[156px] gap-4 flex-col flex  '>
-            <div className="text-left w-full h-[80px]">
-              <h1 className="font-semibold text-2xl h-[32px] text-[#20232C]">Welcome to WordWorksAI</h1>
+  return (
+    <div className="flex bg-[#FCFCFD] min-h-screen flex-1 w-full"> 
+      <div className="flex-grow transition-all duration-300 w-full">
+        <div className="p-4 lg:p-6 w-full">
+          <div className='h-auto md:h-[156px] gap-4 flex-col flex'>
+            <div className="text-left w-full h-auto md:h-[80px]">
+              <h1 className="font-semibold text-2xl h-auto md:h-[32px] text-[#20232C]">Welcome to WordWorksAI</h1>
               <p
-                className={'font-medium text-sm h-[40px]  mt-2  lg:text-left'}
+                className={'font-medium text-sm h-auto md:h-[40px] mt-2 lg:text-left'}
                 style={{ color: "#9199B0" }}
               >
                 Enhance response accuracy and speed with our Gen AI chatbots, providing instant,
-                reliable support 24/7 to <br /> boost customer engagement and efficiency.
+                reliable support 24/7 to <br className="hidden md:block" /> boost customer engagement and efficiency.
               </p>
             </div>
             <div
-              className={`justify-between h-[60px] w-full flex flex-row  gap-5`}
+              className={`justify-between h-auto md:h-[60px] w-full flex flex-col md:flex-row gap-5`}
             >
               {/* Our Partners */}
-              <div
-                className={`text-center lg:w-[360px] lg:text-left flex flex-row md:flex-row items-center  sm:flex-row sm:w-full sm:justify-between justify-between gap-5 bg-white px-4 py-2  border-[1px] border-[#F3F4F6] rounded-md`}
+              <div  
+                className={`text-center w-full md:w-1/3 lg:w-[360px] lg:text-left flex flex-row items-center justify-between gap-5 bg-white px-4 py-2 border-[1px] border-[#F3F4F6] rounded-md`}
               >
-                <p className={` mt-0 text-[#20232C] text-sm font-medium   leading-5`}>Our Partners</p>
-                <div className="flex w-[168px]   -space-x-2 lg:mb-3 ">
+                <p className={`mt-0 text-[#20232C] text-sm font-medium leading-5`}>Our Partners</p>
+                <div className="flex w-[168px] -space-x-2 lg:mb-3">
                   <img
-                    className={`transition-all  h-10 sm:w-8 sm:h-8 w-10 lg:w-10 lg:h-10 lg:mt-2`}
+                    className={`transition-all h-10 sm:w-8 sm:h-8 w-10 lg:w-10 lg:h-10 lg:mt-2`}
                     src={AtlassianLogo}
                     alt="atlassiam-logo"
                   />
                   <img
-                    className={`transition-all sm:w-8 sm:h-8  w-10 h-10  lg:w-10 lg:h-10 lg:mt-2`}
+                    className={`transition-all sm:w-8 sm:h-8 w-10 h-10 lg:w-10 lg:h-10 lg:mt-2`}
                     src={AmazonLogo}
                     alt="aws-logo"
                   />
                   <img
-                    className={`transition-all sm:w-8 sm:h-8  w-10 h-10  lg:w-10 lg:h-10 lg:mt-2`}
+                    className={`transition-all sm:w-8 sm:h-8 w-10 h-10 lg:w-10 lg:h-10 lg:mt-2`}
                     src={GoogleLogo}
                     alt="google-logo"
                   />
                   <img
-                    className={`transition-all sm:w-8 sm:h-8  w-10 h-10  lg:w-10 lg:h-10 lg:mt-2`}
+                    className={`transition-all sm:w-8 sm:h-8 w-10 h-10 lg:w-10 lg:h-10 lg:mt-2`}
                     src={ZohoLogo}
                     alt="zoho-logo"
                   />
                   <img
-                    className={`transition-all sm:w-8 sm:h-8  w-10 h-10  lg:w-10 lg:h-10 lg:mt-2`}
+                    className={`transition-all sm:w-8 sm:h-8 w-10 h-10 lg:w-10 lg:h-10 lg:mt-2`}
                     src={MicrosoftLogo}
                     alt="microsoft-logo"
                   />
@@ -73,32 +72,32 @@ const MainContent = () => {
               </div>
               {/* Integrations */}
               <div  
-                className={`text-center lg:text-left flex flex-row md:flex-row items-center  sm:flex-row sm:justify-between  justify-between gap-5 bg-white  px-4 py-2 lg:w-[360px] border-[1px] border-[#F3F4F6] rounded-md`}
+                className={`text-center w-full md:w-1/3 lg:text-left flex flex-row items-center justify-between gap-5 bg-white px-4 py-2 lg:w-[360px] border-[1px] border-[#F3F4F6] rounded-md`}
               >
-                <p className={`  mt-0 text-[#20232C] text-sm font-medium  leading-5 `}>Integrations</p>
+                <p className={`mt-0 text-[#20232C] text-sm font-medium leading-5`}>Integrations</p>
                 <div className="flex w-[168px] -space-x-2 lg:mb-3">
                   <img
-                    className={`transition-all sm:w-8 sm:h-8  w-10 h-10  lg:w-10 lg:h-10 lg:mt-2`}
+                    className={`transition-all sm:w-8 sm:h-8 w-10 h-10 lg:w-10 lg:h-10 lg:mt-2`}
                     src={WhatsappLogo}
                     alt="whatsapp-logo"
                   />
                   <img
-                    className={`transition-all sm:w-8 sm:h-8   w-10 h-10  lg:w-10 lg:h-10 lg:mt-2 `}
+                    className={`transition-all sm:w-8 sm:h-8 w-10 h-10 lg:w-10 lg:h-10 lg:mt-2`}
                     src={TelegramLogo}
                     alt="telegram-logo"
                   />
                   <img
-                    className={`transition-all sm:w-8 sm:h-8   w-10 h-10  lg:w-10 lg:h-10 lg:mt-2`}
+                    className={`transition-all sm:w-8 sm:h-8 w-10 h-10 lg:w-10 lg:h-10 lg:mt-2`}
                     src={InstaLogo}
                     alt="insta-logo"
                   />
                   <img
-                    className={`transition-all sm:w-8 sm:h-8   w-10 h-10  lg:w-10 lg:h-10 lg:mt-2`}
+                    className={`transition-all sm:w-8 sm:h-8 w-10 h-10 lg:w-10 lg:h-10 lg:mt-2`}
                     src={OtherIntegrationLogo}
                     alt="other-integration"
                   />
                   <img
-                    className={`transition-all sm:w-8 sm:h-8   w-10 h-10  lg:w-10 lg:h-10 lg:mt-2`}
+                    className={`transition-all sm:w-8 sm:h-8 w-10 h-10 lg:w-10 lg:h-10 lg:mt-2`}
                     src={MessengerLogo}
                     alt="messanger-logo"
                   />
@@ -106,32 +105,32 @@ const MainContent = () => {
               </div>
               {/* Our Customers */}
               <div
-                className={`text-center lg:text-left flex flex-row justify-between items-center   sm:justify-between   gap-5 bg-white  px-2 py-2 lg:w-[360px] border-[1px] border-[#F3F4F6] rounded-md`}
+                className='text-center w-full md:w-1/3 lg:text-left flex flex-row justify-between items-center gap-5 bg-white px-2 py-2 lg:w-[360px] border-[1px] border-[#F3F4F6] rounded-md'
               >
-                <p className={`  mt-0} text-[#20232C] text-sm font-medium  leading-5`}>Our Customers</p>
+                <p className='mt-0 text-[#20232C] text-sm font-medium leading-5'>Our Customers</p>
                 <div className="flex w-[168px] -space-x-2 lg:mb-3">
-                  <img
-                    className={`transition-all  w-10 h-10  sm:w-8 sm:h-8  lg:w-10 lg:h-10 lg:mt-2 `}
+                  <img  
+                    className='transition-all w-10 h-10 sm:w-8 sm:h-8 lg:w-10 lg:h-10 lg:mt-2'
                     src={BajajLogo}
                     alt="bajaj-logo"
                   />
                   <img
-                    className={`transition-all sm:w-8 sm:h-8  w-10 h-10   lg:w-10 lg:h-10 lg:mt-2`}
+                    className={`transition-all sm:w-8 sm:h-8 w-10 h-10 lg:w-10 lg:h-10 lg:mt-2`}
                     src={HyundaiLogo}
                     alt="hyundai-logo"
                   />
                   <img
-                    className={`transition-all sm:w-8 sm:h-8  w-10 h-10 lg:w-10 lg:h-10 lg:mt-2`}
+                    className={`transition-all sm:w-8 sm:h-8 w-10 h-10 lg:w-10 lg:h-10 lg:mt-2`}
                     src={ApolloLogo}
                     alt="apollo-logo"
                   />
                   <img
-                    className={`transition-all sm:w-8 sm:h-8  w-10 h-10  lg:w-10 lg:h-10 lg:mt-2`}
+                    className={`transition-all sm:w-8 sm:h-8 w-10 h-10 lg:w-10 lg:h-10 lg:mt-2`}
                     src={PepsiLogo}
                     alt="pepsi-logo"
                   />
                   <img
-                    className={`transition-all sm:w-8 sm:h-8  w-10 h-10  lg:w-10 lg:h-10 lg:mt-2`}
+                    className={`transition-all sm:w-8 sm:h-8 w-10 h-10 lg:w-10 lg:h-10 lg:mt-2`}
                     src={FortisLogo}
                     alt="fortis-logo"
                   />
