@@ -2,7 +2,10 @@
 
 const Retail = () => {
   return (
-    <div>Retail</div>
+    <div className="p-8">
+
+      To Be Continue...
+    </div>
   )
 }
 

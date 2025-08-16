@@ -2,7 +2,9 @@
 
 const Manufacturing = () => {
   return (
-    <div>Manufacturing</div>
+    <div className="p-8">
+      To be continue...
+    </div>
   )
 }
 

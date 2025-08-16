@@ -1,14 +1,4 @@
 import React from 'react';
-// import { Swiper, SwiperSlide } from "swiper/react";
-import HealthCare1 from '/assets/health-care1.png';
-import HealthCare2 from '/assets/health-care2.png';
-import HealthCare3 from '/assets/health-care3.png';
-import HealthCare4 from '/assets/health-care4.png';
-import HealthCare5 from '/assets/health-care5.png';
-import HealthCare6 from '/assets/health-care6.png';
-import HealthCare7 from '/assets/health-care7.png';
-import HealthCare8 from '/assets/health-care8.png';
-import HealthCare9 from '/assets/health-care9.png';
 
 import MotorHubBot from '../MotorHub';
 
@@ -25,47 +15,47 @@ const useCases: UseCase[] = [
   {
     title: "24/7 Patient Assistance",
     description: "Round-the-clock support that improves patient satisfaction and frees staff for critical care.",
-    image: HealthCare1
+    image: "/assets/health-care1.png"
   },
   {
     title: "Automated Appointment Booking",
     description: "AI-driven automation personalises scheduling and reminders, optimising patient flow.",
-    image: HealthCare2
+    image: "/assets/health-care2.png"
   },
   {
     title: "Personalized Health Insights",
     description: "Real-time updates that empower patients with timely information and enhance their experience.",
-    image: HealthCare3
+    image: "/assets/health-care3.png"
   },
   {
     title: "Gen –AI Insurance RPA",
     description: "Gen –AI driven automation for streamline insurance approvals, validating Clinical procedures, & disbursals.",
-    image: HealthCare4
+    image: "/assets/health-care4.png"
   },
   {
     title: "Intelligent Prescription Detection",
     description: "Automatically detects prescription requirements, ensuring only valid prescriptions are accepted.",
-    image: HealthCare5
+    image: "/assets/health-care5.png"
   },
   {
     title: "Medication Adherence Monitoring",
     description: "Out Gen AI assistant tracks medication schedules and sends reminders with automated alerts.",
-    image: HealthCare6
+    image: "/assets/health-care6.png"
   },
   {
     title: "Operational Support for Staff",
     description: "Gen AI based optimisation for staff workflows such as Payroll and Leave Management enhancing efficiency.",
-    image: HealthCare7
+    image: "/assets/health-care7.png"
   },
   {
     title: "Streamlined Emergency Handling",
     description: "Our Gen-AI assistant analyzes feedback instantly, to help hospital improve emergency care and responsiveness.",
-    image: HealthCare8
+    image: "/assets/health-care8.png"
   },
   {
     title: "Real-Time Lab Results",
     description: "Access medical records and lab results, with simplified explanations, insights, and actionable steps based on the findings.",
-    image: HealthCare9
+    image: "/assets/health-care9.png"
   },
 ];
 
