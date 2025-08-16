@@ -1,9 +1,9 @@
 import React from 'react';
 // import { Swiper, SwiperSlide } from "swiper/react";
-import ecommerce1 from '../../../public/assets/ecommerce1.png';
-import ecommerce2 from '../../../public/assets/ecommerce2.png';
-import ecommerce3 from '../../../public/assets/ecommerce3.png';
-import ecommerce4 from '../../../public/assets/ecommerce4.png';
+import ecommerce1 from '/assets/ecommerce1.png';
+import ecommerce2 from '/assets/ecommerce2.png';
+import ecommerce3 from '/assets/ecommerce3.png';
+import ecommerce4 from '/assets/ecommerce4.png';
 import FreshMillersBot from '../FreshMillersBot';
 import WatermelonBot from '../WaterMelonBot';
 

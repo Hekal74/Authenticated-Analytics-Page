@@ -1,9 +1,9 @@
 import React from 'react';
 // import { Swiper, SwiperSlide } from "swiper/react";
-import finance1 from '../../../public/assets/finance1.png';
-import finance2 from '../../../public/assets/finance2.png';
-import finance3 from '../../../public/assets/finance3.png';
-import finance4 from '../../../public/assets/finance4.png';
+import finance1 from '/assets/finance1.png';
+import finance2 from '/assets/finance2.png';
+import finance3 from '/assets/finance3.png';
+import finance4 from '/assets/finance4.png';
 // import OkasBot from '../Okas';
 import HarleyBot from '../HarleyLondon';
 import WordWorksAIBot from '../WordWorksAI';
