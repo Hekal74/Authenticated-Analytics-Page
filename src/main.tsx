@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 
 createRoot(document.getElementById('root')!).render(
-  <BrowserRouter basename="/WWAI-Demo">
+  <BrowserRouter basename="">
     <App />
   </BrowserRouter>
 )
